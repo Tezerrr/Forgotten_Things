@@ -13,7 +13,7 @@ def preProcessing(img):
 
 
 # img = cv2.imread("Data/shapeimg.png")
-img = cv2.imread("Data/imShp.jpg")
+# img = cv2.imread("Data/imShp.jpg")
 
 def stackImages(scale, imgArray):
     rows = len(imgArray)
@@ -93,7 +93,7 @@ width = int(movie.get(3))
 height = int(movie.get(4))
 print(movie.get(1), movie.get(2))
 size = (width, height)
-count = 10
+count = 0
 ret, frame = movie.read()
 movie.set(1, 10)
 COORDS = [[0, 0, 0, 0]]
@@ -102,11 +102,10 @@ while movie.isOpened():
     ret, frame1 = movie.read()
     if ret:
         sub = cv2.subtract(frame, frame1)
-        subContour = sub.copy()
         subThres = preProcessing(sub)
         getContours(subThres)
         writer.write(frame1)
-        cv2.imshow("Result4", frame1)
+        cv2.imshow("Result44", frame1)
         if cv2.waitKey(10) == ord("q"):
             break
         count += 3
